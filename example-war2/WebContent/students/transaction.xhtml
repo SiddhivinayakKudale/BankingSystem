@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<div class="container">
+	<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Transaction Page</div>
+		</div>
+		<h:form id="MyForm">
+			<h4>Perform Transaction </h4>
+			
+			
+			<table class="table table-hover">
+				
+				 <tr>
+					<td width="150" valign="top">Your Account Id:</td>
+					<td>
+						 <h:inputText id="accountid"
+						value="#{transactions.fromAccount}" title="fromaccount"
+						required="true" requiredMessage="Please enter your account Id"
+										validatorMessage="Invalid Amount Entered">
+						<f:convertNumber integerOnly="true" type="number" />
+						</h:inputText> 
+					</td>				
+				</tr>
+				
+				<tr>
+					<td width="100" valign="top">Enter Transaction Name:</td>	
+					<td>
+					<h:inputText id="transactionname"
+					value="#{transactions.transactionName}" title="transactionname" required="true" 
+					requiredMessage="Please enter the transaction name">					
+					</h:inputText>
+					</td>				
+				</tr>
+				
+				<tr>
+					<td width="100" valign="top">Enter Transaction Type:</td>
+				<td>
+				<h:selectOneMenu value="#{transactions.transactionType}" required="true" 
+				requiredMessage="Please select the transaction type">
+					 <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+   					<f:selectItem itemValue="NEFT" itemLabel="NEFT" />
+   					<f:selectItem itemValue="UPI" itemLabel="UPI" />
+   					<f:selectItem itemValue="IMPS" itemLabel="IMPS" />
+				</h:selectOneMenu>
+				</td>
+				</tr>
+				
+				<tr>
+					<td width="100" valign="top">Enter Transaction Amount:</td>	
+					<td>
+					<h:inputText id="transactionamount"
+					value="#{transactions.transactionAmount}" title="transactionamount"
+					required="true" requiredMessage="Please enter the Amount"
+										validatorMessage="Invalid Amount Entered">
+					<f:convertNumber doubleOnly="true" type="number" />
+					</h:inputText>
+					</td>		
+				</tr>
+				<tr>
+					<td width="150" valign="top">Enter Receivers Account No:</td>
+					<td>
+					<h:selectOneMenu id="contact" value="#{transactions.toAccount}" required="true" 
+					requiredMessage="Please enter the reciever account no">
+                        <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+                        <f:selectItems value="#{accountManagedBean.getAllAcounts()}" var="c"  
+                                       itemLabel="#{c.accountNo}" itemValue="#{c.accountNo}" />              
+            		</h:selectOneMenu>
+            		</td>
+				</tr>
+				
+			</table>
+			
+			<h:commandButton id="submit" value="Perform Transaction"
+						action="#{addTransaction.addTransaction(transactions)}" class="btn btn-primary" 
+						onclick="return alert('Are you sure you want to do this?');"/>
+					<h:link id="close" value="Close"
+						outcome="/faces/students/index.xhtml" class="btn btn-primary" />
+		</h:form>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<body>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Indian Bank</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="publicusers.xhtml">Public Users</a></li>
+			<li><a href="alluserstransactions.xhtml">View All transactions</a></li>
+		</ul>
+		
+	</div>
+	</nav>
+	<!-- <h6 align="right">Welcome #{namedManager.loggedInUserName()}</h6> -->
+	<br />
+
+	<div class="container">
+		<h:form id="MyForm">
+			<h4>TRANSACTION DETAILS</h4>
+			<table class="table table-hover">
+				<tr>
+					<td width="150" valign="top">Id:</td>
+
+					<td valign="bottom"><h:outputLabel id="Id">#{transController.transaction.transactionId}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Transaction Name:</td>
+
+					<td valign="bottom"><h:outputLabel id="name">#{transController.transaction.transactionName}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Transaction Type:</td>
+
+					<td valign="bottom"><h:outputLabel id="type">#{transController.transaction.transactionType}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Transaction Amount:</td>
+
+					<td valign="bottom"><h:outputLabel id="amount"> #{transController.transaction.transactionAmount}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">From Account:</td>
+
+					<td valign="bottom"><h:outputLabel id="fromaccount">#{transController.transaction.fromAccount}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">To Account:</td>
+
+					<td valign="bottom"><h:outputLabel id="toaccount">#{transController.transaction.toAccount}</h:outputLabel>
+					</td>
+				</tr>
+
+			</table>
+			<h:link id="close" value="Close" outcome="alluserstransactions.xhtml"
+				class="btn btn-primary" />
+
+		</h:form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Indian Bank</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="publicusers.xhtml">Public Users</a></li>
+			<li><a href="alluserstransactions.xhtml">View All transactions</a></li>
+		</ul>
+		
+	</div>
+	</nav>
+	<div class="container">
+		<h:form id="MyForm">
+			<h4>USER DETAILS</h4>
+			<table class="table table-hover">
+				<tr>
+					<td width="150" valign="top">Id:</td>
+
+					<td valign="bottom"><h:outputLabel id="Id">#{userController.user.userId}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Lastname:</td>
+
+					<td valign="bottom"><h:inputText id="lastname"
+							value="#{userController.user.lastname}">
+						</h:inputText></td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Firstname:</td>
+
+					<td valign="bottom"><h:inputText id="firstname"
+							value="#{userController.user.firstname}">
+						</h:inputText></td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Email:</td>
+
+					<td valign="bottom"><h:inputText id="email"
+							value="#{userController.user.email}">
+						</h:inputText></td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">PhoneNumber:</td>
+
+					<td valign="bottom"><h:inputText id="phonenumber"
+							value="#{userController.user.phoneNumber}">
+						</h:inputText></td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">Address:</td>
+
+					<td valign="bottom"><h:inputText id="address"
+							value="#{userController.user.address}">
+						</h:inputText></td>
+				</tr>
+
+			</table>
+
+			<h:commandButton id="save" value="Save"
+				action="#{userManagedBean.editUser(userController.user)}"
+				class="btn btn-primary">
+				<f:param name="userID" value="#{userController.userId+1}" />
+			</h:commandButton>
+			<h:link id="close" value="Close" outcome="publicusers.xhtml" class="btn btn-primary" />
+		</h:form>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+
+=.container {
+  display: flex;
+  justify-content: center;
+}
+.center {
+  width: 400px; 
+  padding: 10px;
+  background: #5F85DB;
+  color: #fff;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
+.text-center {
+  padding: 70px 0;
+  border: 3px solid green;
+  text-align: center;
+}
+
+/* body {
+  background: #42275a;  fallback for old browsers
+background: -webkit-linear-gradient(to right, #734b6d, #42275a);  Chrome 10-25, Safari 5.1-6
+background: linear-gradient(to right, #734b6d, #42275a); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+
+
+} */

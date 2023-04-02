@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="ejbModule"/>
+	<classpathentry kind="con" path="org.eclipse.glassfish.tools.lib.system">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.ejb"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BankSystem-common"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/commonj.sdo-2.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/derby.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/derbyclient.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/derbyclient-10.2.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/derbynet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/eclipselink-2.5.2-M1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/glassfish-oracle-jdbc-driver-packages.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/javaee-api-7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/javax.persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/javax.persistence-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/OneDrive - Monash University/Documents/Monash/Java/JavaWorkSpace/JEE_Library/org.eclipse.persistence.jpa.jpql-2.5.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA library">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
+			<attribute name="owner.project.facets" value="jpt.jpa"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

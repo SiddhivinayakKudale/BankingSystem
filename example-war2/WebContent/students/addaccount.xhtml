@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<div class="container">
+	<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Creat New Account Page</div>
+		</div>
+		<h:form id="MyForm">
+			<h4>Add Account </h4>
+			
+			
+			<table class="table table-hover">
+				
+				 <!-- <tr>
+					<td width="150" valign="top">Your Account Id:</td>
+					<td>
+						 <h:inputText id="accountNo"
+						value="#{account.accountNo}" title="accountNo"
+						required="true" requiredMessage="Please enter your account Number"
+										validatorMessage="Invalid Amount Entered">
+						<f:convertNumber integerOnly="true" type="number" />
+						</h:inputText> 
+					</td>				
+				</tr> -->
+				
+				<tr>
+					<td width="100" valign="top">Enter Account Type:</td>	
+					<td>
+					<h:inputText id="accounttype"
+					value="#{account.accounttype}" title="accounttype" ><!-- required="true" 
+					requiredMessage="Please enter the Account Type" -->				
+					</h:inputText>
+					</td>				
+				</tr>
+				
+				
+				
+				<tr>
+					<td width="100" valign="top">Enter Account Balance:</td>	
+					<td>
+					<h:inputText id="accountBalance"
+					value="#{account.accountBalance}" title="accountBalance"
+					required="true" requiredMessage="Please enter the Balance"
+										validatorMessage="Invalid Amount Entered">
+					<f:convertNumber doubleOnly="true" type="number" />
+					</h:inputText>
+					</td>		
+				</tr>
+				
+				
+			</table>
+			
+			<h:commandButton id="submit" value="Create Account"
+						action="#{addAccount.addAccount(account)}" class="btn btn-primary" />
+					<h:link id="close" value="Close"
+						outcome="/faces/students/index.xhtml" class="btn btn-primary" />
+		</h:form>
+	</div>
+</h:body>
+</html>

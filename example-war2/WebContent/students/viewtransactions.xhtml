@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Indian Bank</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="index.xhtml">Home</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><h:link value="Logout" outcome="#{logoutManager.logout()}" /></li>
+		</ul>
+	</div>
+	</nav>
+	<div class="container">
+		<h:form id="MyForm">
+			<h4>TRANSACTION DETAILS</h4>
+			<table class="table table-hover">
+				<tr>
+					<td><h:outputLabel id="transactionId" value="transactionId" /></td>
+					<td><h:outputLabel id="toaccount" value="toaccount" /></td>
+					<td><h:outputLabel id="transactionamount" value="transactionamount" /></td>
+					<td><h:outputLabel id="transactiontype" value="transactiontype" /></td>
+				</tr>
+
+				<!-- <ui:repeat id="Myrepeat" value="#{transactionController.transaction}" var="user"
+					varStatus="status">
+
+					<tr
+						onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:transactionId').textContent">
+						<td><h:outputText
+								value="#{transactionController.transaction.get(status.index).transactionId}"
+								id="transactionId" /></td>
+
+						<td><h:outputText id="toaccount"
+								value="#{transactionController.transaction.get(status.index).toAccount}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="transactionamount"
+								value="#{transactionController.transaction.get(status.index).transactionAmount}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="transactiontype"
+								value="#{transactionController.transaction.get(status.index).transactionType}"></h:outputText>
+						</td>
+					</tr>
+				</ui:repeat> -->
+			</table>
+
+			<!-- <div>
+				<h:link id="Close" value="Close" outcome="index.xhtml"
+					class="btn btn-primary" />
+			</div> -->
+		</h:form>
+	</div>
+</h:body>
+</html>

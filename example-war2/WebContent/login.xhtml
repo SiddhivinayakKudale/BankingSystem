@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<link rel="stylesheet"
+		href="/example-war2/WebContent/resources/css/login.css" />
+	<title>Login page</title>
+</h:head>
+<body>
+	<h2 align="center">Login into Your Account</h2>
+	<br />
+	<!-- <form method="post" action="j_security_check">
+            <label for="j_username">Username:</label>
+            <input type="text" name="j_username" />
+            
+            <label for="j_password">Password:</label>
+            <input type="password" name="j_password" />
+            <input type="submit" value="Submit"/>
+        </form> -->
+
+	<div class="container" align="center">
+		<div class="col d-flex justify-content-center" align="center">
+			<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+				<div>
+					<form method="post" action="j_security_check">
+						<div class="form-group">
+							<input _ngcontent-c0="" name="j_username" autofocus=""
+								class="form-control form-control-lg" placeholder="User email"
+								type="text" />
+						</div>
+						<div class="form-group">
+							<input class="form-control form-control-lg" name="j_password"
+								placeholder="Password" type="password" />
+						</div>
+						<div class="form-group">
+							<button class="btn btn-info btn-lg btn-block" value="Submit"
+								type="submit">Log In</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

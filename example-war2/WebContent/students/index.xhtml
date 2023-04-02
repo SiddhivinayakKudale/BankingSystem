@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Home Page</div>
+		</div>
+		<h:form id="MyForm">
+			<h4>YOUR ACCOUNTS INFORMATION</h4>
+			<table class="table table-hover">
+				<tr>
+					<td><h:outputLabel id="accountno" value="Accountno" /></td>
+					<td><h:outputLabel id="accountbalance" value="AccountBalance" />
+					</td>
+					<td><h:outputLabel id="accounttype" value="AccountType" /></td>
+					<td><h:outputLabel id="view" value="View Transaction" /></td>
+					<td><h:outputLabel id="action" value="Transfer funds" /></td>
+				</tr>
+
+				<ui:repeat id="Myrepeat" value="#{accountApplication.accounts}"
+					var="account" varStatus="status">
+
+					<tr
+						onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:accountno').textContent">
+						<td><h:outputText
+								value="#{accountApplication.accounts.get(status.index).accountNo}"
+								id="accountno" /></td>
+
+						<td><h:outputText id="accountbalance"
+								value="#{accountApplication.accounts.get(status.index).accountBalance}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="accounttype"
+								value="#{accountApplication.accounts.get(status.index).accounttype}"></h:outputText>
+						</td>
+						<td>
+						<h:link outcome="demo.xhtml"
+								value="View All Transactions">
+							   <f:param name="accountID" value="#{accountApplication.accounts.get(status.index).accountNo}" /> 
+							   <!-- <f:setPropertyActionListener target="#{bean.otherBean}" value="#{accountApplication.accounts.get(status.index).accountNo}" /> -->
+							</h:link>							
+								</td>
+						<td><h:link outcome="transaction.xhtml"
+								value="Transfer Amount" /></td>
+					</tr>
+				</ui:repeat>
+
+			</table>
+			<h:link id="addaccount" value="Create New Account"
+						outcome="addaccount.xhtml" class="btn btn-primary" />
+			
+		</h:form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Add
+				User</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="publicusers.xhtml">Public Users</a></li>
+					<li><a href="alluserstransactions.xhtml">View All transactions</a></li>
+				</ul>
+				
+		</div>
+		<div>
+			<f:view>
+				<h:form>
+					<h1>
+						<h:outputText value="Create" />
+					</h1>
+					<table class="table">
+						<div class="form-group">
+							<tr>
+								<td><h:outputLabel value="Lastname" for="lastname" /></td>
+								<td>
+									<h:inputText id="lastname" class="form-control"
+										value="#{users.lastname}" title="lastname" 
+										required="true" requiredMessage="Please enter the Lastname"/>
+										<br/>
+                            	 <h:message for="lastname" class="#{!lastname.valid ? 'label label-warning' : 'none'}" /> 
+								</td>
+							</tr>
+						</div>
+
+						<div class="form-group">
+							<tr>
+								<td><h:outputLabel value="Firstname" for="firstname" /></td>
+								<td><h:inputText id="firstname" class="form-control"
+										value="#{users.firstname}" title="firstname"
+										required="true" requiredMessage="Please enter the firstname"/>
+										<br/>
+										<h:message for="firstname" class="#{!firstname.valid ? 'label label-warning' : 'none'}" /> 
+										 </td>
+
+							</tr>
+						</div>
+
+						<div class="form-group">
+							<tr>
+								<td><h:outputLabel value="Email" for="email" /></td>
+								<td><h:inputText id="email" class="form-control"
+										value="#{users.email}" title="email" 
+										required="true" requiredMessage="Please enter the Email"
+										validatorMessage="Invalid email format">
+										<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+										</h:inputText>
+										
+										<br/>
+										<h:message for="email" class="#{!email.valid ? 'label label-warning' : 'none'}" />
+										</td>
+							</tr>
+						</div>
+
+						
+						 <div class="form-group">
+							<tr>
+								<td><h:outputLabel value="Password" for="password" /></td>
+								<td><h:inputSecret id="password" class="form-control"
+										value="#{users.password}" title="password" 
+										required="true" requiredMessage="Please enter the Password"
+										validatorMessage="Please Enter the password greater than 5">
+										<f:validateLength minimum="6" />
+										</h:inputSecret>
+										<br/>
+										<h:message for="password" class="#{!password.valid ? 'label label-warning' : 'none'}" />
+										</td>
+							</tr>
+						</div> 
+						
+						
+						 
+						 
+
+						<div class="form-group">
+							<tr>
+								<td><h:outputLabel value="UserType" for="userType" /></td>
+								<td>
+								<!-- <h:inputText id="userType" class="form-control"
+										value="#{users.userType}" title="userType" 
+										required="true" requiredMessage="Please enter the UserType"/>
+										<br/>
+										<h:message for="userType" class="#{!userType.valid ? 'label label-warning' : 'none'}" /> -->
+								<h:selectOneMenu value="#{users.userType}" id="userType" class="form-control" title="userType" 
+										required="true" requiredMessage="Please enter the UserType" >
+					 				<f:selectItem itemValue="#{null}" itemLabel="--select--" />
+   									<f:selectItem itemValue="publicworker" itemLabel="PUBLICWORKER" />
+   									<f:selectItem itemValue="banker" itemLabel="BANKER" />
+   								</h:selectOneMenu>
+								<br/>
+										<h:message for="userType" class="#{!userType.valid ? 'label label-warning' : 'none'}" />
+								</td>
+							</tr>
+						</div>
+
+						<div class="form-group">
+							<tr>
+								<td><h:outputLabel value="Address" for="address" /></td>
+								<td><h:inputText id="address" class="form-control"
+										value="#{users.address}" title="address" 
+										required="true" requiredMessage="Please enter the Address"/>
+										<br/>
+										<h:message for="address" class="#{!address.valid ? 'label label-warning' : 'none'}" />
+										</td>
+							</tr>
+						</div>
+
+						<div class="form-group">
+							<tr>
+								<td><h:outputLabel value="PhoneNumber" for="phoneNumber" />
+								</td>
+								<td><h:inputText id="phoneNumber" class="form-control"
+										value="#{users.phoneNumber}" title="phoneNumber" 
+										required="true" requiredMessage="Please enter the PhoneNumber"
+										validatorMessage="Please Enter a 10 Digit Number">
+										<!-- <f:validateRegex pattern="^\\d{10}$"/> -->
+										<f:validateLength maximum="10" minimum="10" />
+										<f:convertNumber integerOnly="true" type="number" />
+										</h:inputText>
+										<br/>
+										<h:message for="phoneNumber" class="#{!phoneNumber.valid ? 'label label-warning' : 'none'}" />
+										</td>
+							</tr>
+						</div>
+
+					</table>
+
+					<h:commandButton id="submit" value="Submit"
+						action="#{addUser.addUser(users)}" class="btn btn-primary"
+						onclick="return alert('Are you sure you want to do this?');" />
+					<h:link id="close" value="Close"
+						outcome="publicusers.xhtml" class="btn btn-primary" />
+					
+				</h:form>
+
+			</f:view>
+		</div>
+	</div>
+
+</h:body>
+</html>

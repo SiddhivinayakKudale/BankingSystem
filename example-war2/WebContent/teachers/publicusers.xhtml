@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<title>#{titleController.pageTitle}</title>
+</h:head>
+<h:body>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Indian Bank</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="publicusers.xhtml">Public Users</a></li>
+			<li><a href="alluserstransactions.xhtml">View All transactions</a></li>
+		</ul>
+		
+	</div>
+	</nav>
+	<!--  <h6 align="right">Welcome #{namedManager.loggedInUserName()}</h6>  -->
+	<br />
+	<div class="container">
+		<h:form id="MyForm">
+			<h4>USERS DETAILS</h4>
+			<div align="right">                
+                <h:commandButton id="viewAll" value="View All" action="#{searchUser.searchAll()}" class="btn btn-primary" >
+                   <f:param name="transactionID" value="#{status.index + 1}"/>
+                </h:commandButton>
+            </div>
+            <br/>
+			<table class="table table-hover">
+				<tr>
+					<td><h:outputLabel id="userId" value="UserId" /></td>
+					<td><h:outputLabel id="lastname" value="Lastname" /></td>
+					<td><h:outputLabel id="firstname" value="Firstname" /></td>
+					<td><h:outputLabel id="email" value="Email" /></td>
+					<td><h:outputLabel id="address" value="Address" /></td>
+					<td><h:outputLabel id="phonenumber" value="Phonenumber" /></td>
+					<td><h:outputLabel id="action" value="Actions" /></td>
+				</tr>
+
+				<ui:repeat id="Myrepeat" value="#{userApplication.users}" var="user"
+					varStatus="status">
+
+					<tr
+						onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:userId').textContent">
+						<td><h:outputText
+								value="#{userApplication.users.get(status.index).userId}"
+								id="userId" /></td>
+
+						<td><h:outputText id="lastname"
+								value="#{userApplication.users.get(status.index).lastname}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="firstname"
+								value="#{userApplication.users.get(status.index).firstname}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="email"
+								value="#{userApplication.users.get(status.index).email}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="address"
+								value="#{userApplication.users.get(status.index).address}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="phonenumber"
+								value="#{userApplication.users.get(status.index).phoneNumber}"></h:outputText>
+						</td>
+
+						<td>
+							<h:link value="View | " outcome="publicusersdetails.xhtml">
+								<f:param name="userID" value="#{status.index + 1}" />
+							</h:link>
+							
+							<h:link value="Edit | " outcome="editpublicuser.xhtml">
+								<f:param name="userID" value="#{status.index + 1}" />
+							</h:link> 
+							
+							<h:commandLink value="Delete"
+								action="#{removeUser.removeUser(userApplication.users.get(status.index).userId)}"
+								disabled="#{userApplication.users.get(status.index).userId == null}">
+							</h:commandLink>
+							</td>
+					</tr>
+				</ui:repeat>
+
+			</table>
+			
+			<div>
+                    <h:inputText value="#{searchUser.searchByInt}" id="searchById" required="true" onchange ="if (document.getElementById('MyForm:searchById').value.trim() == '') {document.getElementById('MyForm:searchById').value = 0;} "/>
+                    <h:commandButton id="searchId" value="Search by Id" action="#{searchUser.searchUserById(searchUser.searchByInt)}" class="btn btn-primary" >
+                        <f:param name="transactionID" value="#{status.index + 1}"/>
+                    </h:commandButton>
+             </div>
+             
+             
+			<div>
+				<h:link id="add" value="Add" outcome="publicuseradd.xhtml"
+					class="btn btn-primary" />
+			</div>
+		</h:form>
+	</div>
+</h:body>
+</html>

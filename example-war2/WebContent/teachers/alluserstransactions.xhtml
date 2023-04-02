@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head> 
+<body> 
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Indian Bank</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="publicusers.xhtml">Public Users</a></li>
+			<li><a href="alluserstransactions.xhtml">View All transactions</a></li>
+		</ul>
+		
+	</div>
+	</nav>
+<div class="container">
+		<h:form id="MyForm">
+			<h4>ALL USER TRANSACTIONS DETAILS</h4>
+			<div align="right">                
+                    <h:commandButton id="viewAll" value="View All" action="#{searchTransaction.searchAll()}" class="btn btn-primary" >
+                        <f:param name="transactionID" value="#{status.index + 1}"/>
+                    </h:commandButton>
+                </div>
+			<table class="table table-hover">
+				<tr>
+					<td><h:outputLabel id="transactionId" value="TransactionId" /></td>
+					<td><h:outputLabel id="toaccount" value="ToAccount" /></td>
+					<td><h:outputLabel id="transactionamount" value="TransactionAmount" /></td>
+					<td><h:outputLabel id="transactiontype" value="TransactionType" /></td>
+					<td><h:outputLabel id="action" value="Actions" /></td>
+				</tr>
+				 <ui:repeat id="Myrepeat" value="#{transactionApplication.transaction}" var="user"
+					varStatus="status">
+
+					<tr
+						onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:transactionId').textContent">
+						<td><h:outputText
+								value="#{transactionApplication.transaction.get(status.index).transactionId}"
+								id="transactionId" /></td>
+
+						<td><h:outputText id="toaccount"
+								value="#{transactionApplication.transaction.get(status.index).toAccount}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="transactionamount"
+								value="#{transactionApplication.transaction.get(status.index).transactionAmount}"></h:outputText>
+						</td>
+
+						<td><h:outputText id="transactiontype"
+								value="#{transactionApplication.transaction.get(status.index).transactionType}"></h:outputText>
+						</td>
+						<td>
+							<h:link value="View" outcome="viewtransactiondetails.xhtml">
+								<f:param name="transactionID" value="#{status.index + 1}" />
+							</h:link>
+						</td>
+					</tr>
+				</ui:repeat> 
+			</table>
+			
+			<h4>Search by Id:<br/></h4>
+			<div>
+                    <h:inputText value="#{searchTransaction.searchByInt}" id="searchById" required="false" onchange ="if (document.getElementById('MyForm:searchById').value.trim() == '') {document.getElementById('MyForm:searchById').value = 0;} "/>
+                    <br /><br />
+                    <h:commandButton id="searchId" value="Search by Id" action="#{searchTransaction.searchTransactionById(searchTransaction.searchByInt)}" class="btn btn-primary" >
+                        <f:param name="transactionID" value="#{status.index + 1}"/>
+                    </h:commandButton>
+             </div>
+             
+             <!--  <div>
+                    <h:inputText value="#{searchTransaction.searchByString}" id="searchByType" required="false" onchange ="if (document.getElementById('MyForm:searchByType').value.trim() == '') {document.getElementById('MyForm:searchByType').value = 0;} "/>
+                    <h:commandButton id="searchTypeId" value="Search by Type" action="#{searchTransaction.searchTransactionByType(searchTransaction.searchByString)}" class="btn btn-primary" >
+                        <f:ajax execute="@form" render="@form" />
+                        <f:param name="transactionID" value="#{status.index + 1}"/>
+                    </h:commandButton>
+             </div>  -->
+             
+             <h4>Search by Type:<br/></h4>
+             <h:inputText id="searchByType" alt="text"
+                maxlength="6" size="6" title="text"
+                value="#{searchTransaction.searchByString}">
+                <f:ajax listener="#{searchTransaction.searchTransactionByType(searchTransaction.searchByString)}" execute="@this"
+                    event="keyup" render="@form" />
+            </h:inputText>
+             
+             
+             <h4>Search by Id and Type:<br/></h4>
+             <div>
+             		
+                   <h6>Enter Id:-</h6> <h:inputText value="#{searchTransaction.searchByInt1}" id="searchById1" required="false" onchange ="if (document.getElementById('MyForm:searchById').value.trim() == '') {document.getElementById('MyForm:searchById').value = 0;} "/>
+                    <h6>Enter Type:-</h6><h:inputText value="#{searchTransaction.searchByString1}" id="searchByType1" required="false" onchange ="if (document.getElementById('MyForm:searchByType').value.trim() == '') {document.getElementById('MyForm:searchByType').value = 0;} "/>
+                    <br /><br />
+                    <h:commandButton id="searchIdandString" value="searchBy toAccount and Type" action="#{searchTransaction.searchTransactionByIdString(searchTransaction.searchByInt1,searchTransaction.searchByString1)}" class="btn btn-primary" >
+                        <f:param name="transactionID" value="#{status.index + 1}"/>
+                    </h:commandButton>
+             </div>
+             
+             <br/>
+             
+			<h:link id="close" value="Close"
+						outcome="index.xhtml" class="btn btn-primary" />
+		</h:form>
+	</div>
+</body> 
+</html>
+
